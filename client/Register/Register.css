@@ -1,0 +1,32 @@
+.container {
+    width: 80%;
+}
+
+body {
+    padding-top: 54px;
+    background-color: whitesmoke;
+  }
+  
+  @media (min-width: 992px) {
+    body {
+      padding-top: 56px;
+    }
+  }
+
+form {
+    width: 50%;
+    border: 8px solid whitesmoke;
+    padding: 14px;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+}
+
+.form-title {
+    text-align: center;
+    margin: 5px
+}
+
+
+.submit-btn {
+    margin: 12px 36%;
+}
