@@ -1,35 +1,103 @@
-.container {
-    width: 80%;
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: whitesmoke
 }
 
-body {
-    padding-top: 54px;
-    background-color: whitesmoke;
-  }
-  
-  @media (min-width: 992px) {
-    body {
-      padding-top: 56px;
-    }
-  }
+
+.nav {
+    background-color: maroon;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+.nav-brand {
+  float: left;
+  margin: 5px;
+  font-size: larger;
+  text-decoration: none;
+  color: white;
+}
+.nav ul{
+  list-style: none;
+  margin:0;
+  padding: 0;
+  margin: 10px;
+  float: right;
+}
+
+.nav li {
+  display: inline;
+  margin: 30px;
+  padding: 10px;
+}
+.nav li:hover {
+  background-color: black
+}
+
+.nav li.active {
+  background-color: black
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
 
 form {
-    width: 50%;
-    border: 8px solid whitesmoke;
-    padding: 14px;
+    width: 35%;
+    padding: 30px;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-    margin: 40px auto;
+    margin: 10% auto;
 }
 
 .form-title {
     text-align: center;
-    margin: 5px
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 1rem
+}
+label {
+    margin-bottom: .5em;
+    display: block;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 7px;
+    font-size: 1em;
+    font-weight: 400;
+    border: 1px solid #ced4da;
+    border-radius: .25em;
 }
 
 .form-check {
-    display: inline
+}
+.form-check-input {
+    float: left;
+    margin: 3px;
 }
 
 .submit-btn {
-    margin-left: 34%
+    padding: 10px 20px;
+    background-color: maroon;
+    color: white;
+    cursor: pointer;
+} 
+
+.footer {
+    width: 100%;
+    right: 0;
+    position: fixed;
+    bottom: 0;
+    text-align: end;
+    color: maroon;
+}
+
+.footer p {
+    margin-right: 13px;
 }

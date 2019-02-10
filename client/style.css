@@ -1,42 +1,6 @@
 body {
     font-family: 'Ubuntu', sans-serif;
 }
-
-/* body {
-    padding-top: 54px;
-  }
-  
-  @media (min-width: 992px) {
-    body {
-      padding-top: 56px;
-    }
-  }
- */
-
- /* .nav {
-    display: flex;
-    position: fixed;
-    top: 0;
-    background-color: maroon;
-    width: 100%;
-    text-align: center;
- } */
- /* .navbar {
-    list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
- }
-
- .nav-item .nav-link {
-    display: inline;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
- }
-  */
   .container {
       margin: 0 auto;
   }
