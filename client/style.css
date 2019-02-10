@@ -1,9 +1,9 @@
 body {
     font-family: 'Ubuntu', sans-serif;
+    margin-top: -11px;
+    margin: 0;
+    padding: 0;
 }
-  .container {
-      margin: 0 auto;
-  }
   .nav {
       background-color: maroon;
       width: 100%;
@@ -14,7 +14,7 @@ body {
 .nav-brand {
     float: left;
     margin: 5px;
-    font-size: large;
+    font-size: larger;
     text-decoration: none;
     color: white;
 }
@@ -50,11 +50,37 @@ body {
     height: 530px
 }
 
+.img-below {
+    height: 285px;
+    width: 100%;
+}
+
+.img-top {
+    width: 100%;
+    height: 392px;
+}
+
+.row {
+    height: 680px;
+}
+.first-column {
+    /* background-image: url("https://imgix.bustle.com/rehost/2016/9/13/3e1fe122-3aa7-420e-845e-c019de0cc00a.jpg"); */
+    /* background-color: red; */
+    background-image: url("./assets/meal2.png");
+    background-size: cover;
+
+}
+.first-column .items {
+    margin-top: 80%;
+}
 .column {
     float: left;
-    width: 33.33%;
-    margin-top: 10px;
+    width: 50%;
+    height: 100vh;
+   
   }
+
+  
 
   .row:after {
     content: "";
@@ -62,7 +88,30 @@ body {
     clear: both;
   }
 
-.col-btn {
+  .col {
+      width: 100%;
+      height: 33.33%;
+      text-align: center;
+  }
+
+  button {
+    /* color: maroon; */
+    background-color: indianred;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10%;
+  }
+
+  button a {
+      text-decoration: none;
+      color: white;
+  }
+
+  .col a {
+      text-decoration: none;
+  }
+/* .col-btn {
     margin: 10px 58px;
 }
 
@@ -77,3 +126,28 @@ button {
     border-radius: 10px;
     cursor: pointer
   }
+
+  .row {
+    text-align: center;
+  }
+
+  .col-icon {
+      display: inherit;
+  }
+
+  .column a {
+      text-decoration: none;
+  }
+
+  .footer {
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    text-align: end;
+    color: maroon;
+    margin-top: 10px;
+}
+
+.footer p {
+    margin-right: 13px;
+} */
