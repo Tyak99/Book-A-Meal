@@ -1,9 +1,15 @@
 import express from 'express';
+import MenuService from '../services/MenuServices';
 
 const router = express.Router();
+const menuServices = new MenuService();
 
 router.get('/', (req, res) => {
-  res.send('well, welcome');
+  res.status(200).send(menuServices.getAll());
+});
+
+router.get('/:id', (req, res) => {
+  res.status(200).send(menuServices.get(req.params.id));
 });
 
 export default router;

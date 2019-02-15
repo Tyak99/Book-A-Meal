@@ -29,4 +29,8 @@ export default class MenuServices {
   getAll() {
     return this.fetchAll();
   }
+
+  get(id) {
+    return this.fetchAll()[id - 1];
+  }
 }
