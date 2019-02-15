@@ -43,4 +43,31 @@ export default class MealService {
   get(id) {
     return this.fetchAllMeals()[id - 1];
   }
+
+  setMeal(data) {
+    const allMeal = this.fetchAllMeals();
+    const newMeal = {
+      id: allMeal.length + 1,
+      name: data.name,
+      size: data.size,
+      price: data.price,
+    };
+    allMeal.push(newMeal);
+    return allMeal;
+  }
+
+  editMeal(id, newMeal) {
+    const meal = this.fetchAllMeals()[id - 1];
+    meal.price = newMeal.price;
+    meal.name = newMeal.name;
+    meal.size = newMeal.size;
+    return meal;
+  }
+
+  deleteMeal(id) {
+    const meals = this.fetchAllMeals();
+    return meals.filter((data) => {
+      return data.id !== id;
+    });
+  }
 }

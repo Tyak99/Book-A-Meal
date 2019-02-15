@@ -1,14 +1,13 @@
 import express from 'express';
-import MealService from './services/MealService';
+import mealRoutes from './routes/mealsRoute';
 
 const app = express();
-const mealService = new MealService();
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.get('/api/v1/meals', (req, res) => {
-  res.status(200).send(mealService.getAll());
-});
-app.get('/api/v1/meals/:id', (req, res) => {
-  res.status(200).send(mealService.get(req.params.id));
-});
+app.use('/api/v1/meals', mealRoutes);
+
 const PORT = 3000;
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log('port has started');
+});
