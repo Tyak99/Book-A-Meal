@@ -18,6 +18,6 @@ router.post('/', (req, res) => {
     price: req.body.price,
     meals: req.body.meals,
   };
-  res.status(202).send(menuServices.addMeal(newMenu));
+  res.status(201).send(menuServices.addMeal(newMenu));
 });
 export default router;

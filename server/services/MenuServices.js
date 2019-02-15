@@ -36,12 +36,7 @@ export default class MenuServices {
 
   addMeal(menu) {
     const allMenu = this.fetchAll();
-    const newMenu = {
-      id: allMenu.length + 1,
-      name: menu.name,
-      price: menu.price,
-      meals: menu.meals,
-    };
+    const newMenu = { id: allMenu.length + 1, ...menu };
     allMenu.push(newMenu);
     return allMenu;
   }
