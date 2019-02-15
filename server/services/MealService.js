@@ -55,4 +55,12 @@ export default class MealService {
     allMeal.push(newMeal);
     return allMeal;
   }
+
+  editMeal(id, newMeal) {
+    const meal = this.fetchAllMeals()[id - 1];
+    meal.price = newMeal.price;
+    meal.name = newMeal.name;
+    meal.size = newMeal.size;
+    return meal;
+  }
 }
