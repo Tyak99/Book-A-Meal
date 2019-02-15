@@ -19,12 +19,7 @@ export default class OrderService {
 
   addOrder(order) {
     const allOrders = this.fetchAll();
-    const newOrder = {
-      id: allOrders.length + 1,
-      meals: order.meals,
-      price: order.price,
-      customer: order.customer,
-    };
+    const newOrder = { id: allOrders.length + 1, ...order };
     allOrders.push(newOrder);
     return allOrders;
   }

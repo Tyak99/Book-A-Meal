@@ -14,7 +14,7 @@ router.post('/', (req, res) => {
     price: req.body.price,
     customer: req.user.id,
   };
-  res.status(202).send(orderServices.addOrder(newOrder));
+  res.status(201).send(orderServices.addOrder(newOrder));
 });
 
 router.put('/:id', (req, res) => {
