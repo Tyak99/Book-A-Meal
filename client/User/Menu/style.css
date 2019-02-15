@@ -1,0 +1,147 @@
+body {
+    box-sizing: border-box;
+    padding-top: 54px;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.nav {
+    background-color: maroon;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+.nav-brand {
+  float: left;
+  margin: 5px;
+  font-size: larger;
+  text-decoration: none;
+  color: white;
+}
+.nav ul{
+  list-style: none;
+  margin:0;
+  padding: 0;
+  margin: 10px;
+  float: right;
+}
+
+.nav li {
+  display: inline;
+  margin: 30px;
+  padding: 10px;
+}
+.nav li:hover {
+  background-color: black
+}
+
+.nav li.active {
+  background-color: black
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+.container {
+    margin: 0 10px;
+}
+
+.col {
+    float: left;
+    max-width: 232px;
+    padding: 0 20px;
+    margin: 10px 4px;
+}
+
+.row {
+    margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    height: 70vh;
+    overflow: auto;
+  }
+
+  .card-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+  }
+  .card-body {
+      padding: 1.25em;
+  }
+  .card-title {
+      margin: 10%;
+      color: cornflowerblue;
+      font-size: 20px;
+      text-align: center;
+  }
+
+  .card-amount {
+    font-size: 18px;
+    margin-bottom: 10px;
+    
+  }
+  .card-text {
+      font-weight: 400;
+      font-size: larger;
+  }
+
+  button {
+      padding: 7px 10px;
+      cursor: pointer;
+      margin: 10%;
+      font-size: 15px;
+      display: inline-block;
+      text-align: center;
+      font-weight: 400;
+      color: white;
+      background-color: cornflowerblue;
+      border-radius: 0.3em;
+  }
+  button:hover {
+      background-color: maroon;
+  }
+
+  .pagination {
+    display: inline-block;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 0.5px solid grey;
+    border-radius: 0.25em;  
+  }
+  .pagination a.active {
+    background-color: maroon;
+    color: white;
+  }
+  .pagination a:hover:not(.active) {
+    background-color: grey;
+  }
+
+  /* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+    .col {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
