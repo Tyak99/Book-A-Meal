@@ -10,5 +10,14 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   res.status(200).send(mealService.get(req.params.id));
 });
+router.post('/', (req, res) => {
+  const meal = {
+    id: req.body.id,
+    name: req.body.name,
+    size: req.body.size,
+    price: req.body.price,
+  };
+  res.send(mealService.setMeal(meal));
+});
 
 export default router;
