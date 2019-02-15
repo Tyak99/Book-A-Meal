@@ -28,4 +28,10 @@ export default class OrderService {
     allOrders.push(newOrder);
     return allOrders;
   }
+
+  editOrder(id, data) {
+    const order = this.fetchAll()[id - 1];
+    order.meals = data.meals;
+    order.price = data.price;
+  }
 }
