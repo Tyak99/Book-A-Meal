@@ -16,4 +16,16 @@ export default class OrderService {
   getAll() {
     return this.fetchAll();
   }
+
+  addOrder(order) {
+    const allOrders = this.fetchAll();
+    const newOrder = {
+      id: allOrders.length + 1,
+      meals: order.meals,
+      price: order.price,
+      customer: order.customer,
+    };
+    allOrders.push(newOrder);
+    return allOrders;
+  }
 }
