@@ -1,0 +1,48 @@
+import Menu from '../models/Menu';
+
+export default class MenuServices {
+  fetchAll() {
+    this.menu = [
+      {
+        id: 1,
+        name: 'Breakfast Classic',
+        price: 1500,
+        meals: ['Jollof Rice', 'Salad', 'Beans'],
+      },
+      {
+        id: 2,
+        name: 'Lunch Combo',
+        price: 1200,
+        meals: ['Moimoi', 'Garri', 'Ice Block'],
+      },
+    ];
+    return this.menu.map((data) => {
+      const menu = new Menu();
+      menu.id = data.id;
+      menu.name = data.name;
+      menu.price = data.price;
+      menu.meals = data.meals;
+      return menu;
+    });
+  }
+
+  getAll() {
+    return this.fetchAll();
+  }
+
+  get(id) {
+    return this.fetchAll()[id - 1];
+  }
+
+  addMeal(menu) {
+    const allMenu = this.fetchAll();
+    const newMenu = {
+      id: allMenu.length + 1,
+      name: menu.name,
+      price: menu.price,
+      meals: menu.meals,
+    };
+    allMenu.push(newMenu);
+    return allMenu;
+  }
+}
