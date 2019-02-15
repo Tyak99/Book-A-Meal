@@ -17,4 +17,11 @@ router.post('/', (req, res) => {
   res.status(202).send(orderServices.addOrder(newOrder));
 });
 
+router.put('/:id', (req, res) => {
+  const editedOrder = {
+    meals: req.body.meals,
+    price: req.body.price,
+  };
+  res.status(202).send(orderServices.editOrder(req.params.id, editedOrder));
+});
 export default router;

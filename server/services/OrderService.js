@@ -33,5 +33,6 @@ export default class OrderService {
     const order = this.fetchAll()[id - 1];
     order.meals = data.meals;
     order.price = data.price;
+    return order;
   }
 }
