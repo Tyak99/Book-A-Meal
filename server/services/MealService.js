@@ -66,8 +66,6 @@ export default class MealService {
 
   deleteMeal(id) {
     const meals = this.fetchAllMeals();
-    return meals.filter((data) => {
-      return data.id !== id;
-    });
+    return meals.filter(data => data.id !== id);
   }
 }
