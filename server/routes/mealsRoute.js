@@ -20,4 +20,12 @@ router.post('/', (req, res) => {
   res.send(mealService.setMeal(meal));
 });
 
+router.put('/:id', (req, res) => {
+  const editedMeal = {
+    name: req.body.name,
+    size: req.body.size,
+    price: req.body.price,
+  };
+  res.send(mealService.editMeal(req.params.id, editedMeal));
+});
 export default router;
