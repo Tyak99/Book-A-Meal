@@ -1,0 +1,80 @@
+body {
+    box-sizing: border-box;
+    padding-top: 54px;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.nav {
+    background-color: maroon;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+.nav-brand {
+  float: left;
+  margin: 5px;
+  font-size: larger;
+  text-decoration: none;
+  color: white;
+}
+.nav ul{
+  list-style: none;
+  margin:0;
+  padding: 0;
+  margin: 10px;
+  float: right;
+}
+
+.nav li {
+  display: inline;
+  margin: 30px;
+  padding: 10px;
+}
+.nav li:hover {
+  background-color: black
+}
+
+.nav li.active {
+  background-color: black
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+.section {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+.details {
+    padding: 0.5em;
+    border-radius: 6px;
+    background-color: #D4D5D7;
+    margin-top: -17px;
+}
+
+.item {
+    width: 30%;
+}
+.item span {
+    float: right;
+}
+
+.confirm-button {
+    margin: 10px;
+    font-size: larger;
+    font-weight: 500;
+    padding: 10px 10%;
+    color: white;
+    background-color: dodgerblue;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.confirm-button:hover {
+    background-color: #0B3DAF;
+}

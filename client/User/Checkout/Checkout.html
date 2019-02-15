@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="./Checkout.css ">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div class="nav">
+        <div class="nav-brand"><a href="../../index.html" class="nav-brand"> FoodDrip </a></div>
+        <ul>
+            <li class="home"><a href="../../index.html" class="nav-link active">Home</a></li>
+            <li class="tutorials"><a href="#" class="nav-link">About</a></li>
+            <li class="about"><a href="../../Login/Login.html" class="nav-link">Sign In</a></li>
+            <li class="news"><a href="../../Register/Register.html" class="nav-link">Sign Up</a></li>
+        </ul>
+    </div>
+    <!-- end of Navigation -->
+    <div class="row">
+        <div class="col-75">
+            <div class="container">
+                <form action="">
+                    <div class="row">
+                        <div class="col-50">
+                            <h2> Delivery Address</h2>
+                            <label for="Adress"> Full Address </label>
+                            <input type="text" placeholder="10, Ave Street">
+
+                            <label for="City"> City </label>
+                            <input type="text" placeholder="City">
+
+                            <label for="State"> State </label>
+                            <input type="text" placeholder="State">
+                        </div>
+                        <div class="col-50">
+                            <h2> Payment Information</h2>
+                            <label for="Card-name"> Name on Card </label>
+                            <input type="text" placeholder="Name">
+
+                            <label for="Card-number"> Card Number </label>
+                            <input type="text" placeholder="2901 8912 718 89329">
+
+                            <label for="exp-date"> Expiry Month </label>
+                            <input type="text" placeholder="Month">
+                            <div class="row">
+                                <div class="col-50">
+                                    <label for="exp-year"> Expiry Year </label>
+                                    <input type="text" placeholder="Year">
+                                </div>
+                                <div class="col-50">
+                                    <label for="cvv"> CVV </label>
+                                    <input type="text" placeholder="CVV">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-25">
+            <div class="container cart">
+                <h2>Cart</h2>
+                <p>Jollof Rice<span class="price">N500</span></p>
+                <p>2 Chicken<span class="price">N1500</span></p>
+                <p>Salad <span class="price">N600</span></p>
+                <p> 500cl Pepsi <span class="price">N500</span></p>
+                <hr>
+                <p>Total <span class="price" style="color:black"><b>N3100</b></span></p>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center"> <a href="../Confirmation/Confirmation.html"> <button class="checkout-button">
+                Checkout Now </button></a></div>
+</body>
+
+</html>
