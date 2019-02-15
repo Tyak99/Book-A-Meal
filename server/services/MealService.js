@@ -1,5 +1,4 @@
 import Meals from '../models/Meals';
-import Meal from '../models/Meals';
 
 export default class MealService {
   fetchAllMeals() {

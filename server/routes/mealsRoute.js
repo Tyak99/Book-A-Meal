@@ -28,4 +28,9 @@ router.put('/:id', (req, res) => {
   };
   res.send(mealService.editMeal(req.params.id, editedMeal));
 });
+
+router.delete('/:id', (req, res) => {
+  mealService.deleteMeal(req.params.id);
+  res.status(204).send('Meal deleted');
+});
 export default router;
