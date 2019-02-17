@@ -70,6 +70,10 @@ body {
     text-align: center;
     background-color: #f1f1f1;
     height: 478px;
+    /* height: 100%!important; */
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
     /* overflow: auto; */
   }
 
@@ -80,6 +84,7 @@ body {
   }
   .card-body {
       padding: 1.25em;
+      flex: 1 1 auto;
   }
   .card-title {
       margin: 10%;
@@ -97,6 +102,9 @@ body {
       font-weight: 400;
       font-size: larger;
   }
+  .card-footer {
+    margin-bottom: -10px;
+  }
 
   button {
       padding: 7px 10px;
@@ -113,7 +121,6 @@ body {
   button:hover {
       background-color: maroon;
   }
-
   .pagination {
     display: inline-block;
   }
