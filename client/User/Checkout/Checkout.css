@@ -152,3 +152,27 @@ input {
       margin-bottom: 20px;
     }
   }
+
+  .footer {
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    text-align: end;
+    color: maroon;
+}
+@media screen and (max-height: 620px) {
+  .footer {
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .footer {
+    position: relative;
+  }
+}
+
+.footer p {
+    margin-right: 13px;
+}
