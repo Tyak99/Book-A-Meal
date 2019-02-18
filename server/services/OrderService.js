@@ -20,6 +20,10 @@ export default class OrderService {
     return this.fetchAll();
   }
 
+  get(id) {
+    return this.fetchAll()[id - 1];
+  }
+
   addOrder(order) {
     const allOrders = this.fetchAll();
     const newOrder = { id: allOrders.length + 1, ...order, createdAt: new Date() };
