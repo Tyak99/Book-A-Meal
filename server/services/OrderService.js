@@ -9,6 +9,9 @@ export default class OrderService {
       order.meals = data.meals;
       order.price = data.price;
       order.customer = data.customer;
+      order.status = data.status;
+      order.delivery_address = data.delivery_address;
+      order.createdAt = data.createdAt;
       return order;
     });
   }
@@ -19,7 +22,7 @@ export default class OrderService {
 
   addOrder(order) {
     const allOrders = this.fetchAll();
-    const newOrder = { id: allOrders.length + 1, ...order };
+    const newOrder = { id: allOrders.length + 1, ...order, createdAt: new Date() };
     allOrders.push(newOrder);
     return allOrders;
   }
@@ -28,6 +31,8 @@ export default class OrderService {
     const order = this.fetchAll()[id - 1];
     order.meals = data.meals;
     order.price = data.price;
+    order.status = data.status;
+    order.delivery_address = data.delivery_address;
     return order;
   }
 }

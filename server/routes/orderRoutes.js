@@ -13,6 +13,7 @@ router.post('/', (req, res) => {
     meals: req.body.meals,
     price: req.body.price,
     customer: req.user.id,
+    delivery_address: req.body.delivery_address,
   };
   res.status(201).send(orderServices.addOrder(newOrder));
 });
