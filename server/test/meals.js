@@ -147,4 +147,37 @@ describe('Meal tests', () => {
         });
     });
   });
+  describe('DELETE /api/v1/meals', () => {
+    it('should return error 404 on wrong api call', (done) => {
+      chai
+        .request(server)
+        .delete('/api/v1/wrongapi')
+        .end((err, res) => {
+          expect(res.status).to.eql(404);
+          done();
+        });
+    });
+    it('should return error when incorrect id is passed', (done) => {
+      chai
+        .request(server)
+        .delete('/api/v1/meals/wrongid')
+        .end((err, res) => {
+          expect(res.body.status).to.eql(400);
+          expect(res.body.data).to.have.property('message');
+          done();
+        });
+    });
+    it('should delete the data when the right id is passed', (done) => {
+      chai
+        .request(server)
+        .delete('/api/v1/meals/1')
+        .end((err, res) => {
+          expect(res.body.status).to.eql(200);
+          expect(res.body.data)
+            .to.have.property('message')
+            .eql('Meal deleted successfully');
+          done();
+        });
+    });
+  });
 });
