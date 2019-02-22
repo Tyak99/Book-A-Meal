@@ -112,4 +112,39 @@ describe('Meal tests', () => {
         });
     });
   });
+  describe('PUT /api/v1/meals', () => {
+    it('should return 404 error on wrong api call', (done) => {
+      chai
+        .request(server)
+        .put('/api/v1/wrongapi')
+        .end((err, res) => {
+          expect(res.status).to.eql(404);
+          done();
+        });
+    });
+    it('should return error 400 if wrong id is passed', (done) => {
+      chai
+        .request(server)
+        .put('/api/v1/meals/wrongid')
+        .end((err, res) => {
+          expect(res.body.status).to.eql(400);
+          expect(res.body.data).to.have.property('message');
+          done();
+        });
+    });
+    it('should update the meal when correct id is passed along', (done) => {
+      chai
+        .request(server)
+        .put('/api/v1/meals/1')
+        .send({ price: '1000' })
+        .end((err, res) => {
+          expect(res.body.status).to.eql(200);
+          expect(res.body.data).to.be.an('object');
+          expect(res.body.data).to.have.property('id');
+          expect(res.body.data).to.have.property('name');
+          expect(res.body.data).to.have.property('price');
+          done();
+        });
+    });
+  });
 });
