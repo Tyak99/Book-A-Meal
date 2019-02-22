@@ -38,6 +38,6 @@ export default class MenuServices {
     const allMenu = this.fetchAll();
     const newMenu = { id: allMenu.length + 1, ...menu };
     allMenu.push(newMenu);
-    return allMenu;
+    return newMenu;
   }
 }

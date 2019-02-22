@@ -4,8 +4,8 @@ const menuServices = new MenuService();
 
 exports.getMenu = (req, res) => {
   const menus = menuServices.getAll();
-  res.status(200).send({
-    status: 'success',
+  res.send({
+    status: 200,
     data: menus,
   });
 };
@@ -13,32 +13,35 @@ exports.getMenu = (req, res) => {
 exports.getOneMenu = (req, res) => {
   const menu = menuServices.get();
   if (!menu) {
-    res.status(404).send({
-      status: 'error',
-      message: 'menu not found',
+    res.send({
+      status: 400,
+      data: {
+        message: 'Sorry, no menu with that id found',
+      },
     });
   }
-  res.status(200).send({
-    status: 'success',
+  res.send({
+    status: 200,
     data: menu,
   });
 };
 
 exports.postMenu = (req, res) => {
-  if (!req.body.name || !req.body.price || !req.body.meals) {
+  const { name, price, meals } = req.body;
+  if (!name || !price || !meals) {
     res.send({
-      status: 'error',
-      message: 'all fields must be present',
+      status: 400,
+      message: 'Sorry, all fields must be present',
     });
   }
   const newMenu = {
-    name: req.body.name,
-    price: req.body.price,
-    meals: req.body.meals,
+    name,
+    price,
+    meals,
   };
-  menuServices.addMeal(newMenu);
-  res.status(201).send({
-    message: 'menu posted successfully',
-    data: newMenu,
+  const setMenu = menuServices.addMeal(newMenu);
+  res.send({
+    status: 201,
+    data: setMenu,
   });
 };
