@@ -2,6 +2,8 @@
 
 Book a meal is a meal booking app. That enables customer book meals and get them delivered to their doorstep
 
+[![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
+
 ## Getting Started
 ```
 # Get the latest snapshot
