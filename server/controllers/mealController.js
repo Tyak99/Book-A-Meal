@@ -70,7 +70,7 @@ exports.editMeal = (req, res) => {
 exports.deleteMeal = (req, res) => {
   const meal = mealService.get(req.params.id);
   if (!meal) {
-    res.send({
+    return res.send({
       status: 400,
       data: {
         message: 'Sorry, no meal with that id found',
@@ -78,7 +78,7 @@ exports.deleteMeal = (req, res) => {
     });
   }
   mealService.deleteMeal(req.params.id);
-  res.send({
+  return res.send({
     status: 200,
     data: {
       message: 'Meal deleted successfully',
