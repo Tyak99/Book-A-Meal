@@ -1,0 +1,19 @@
+{
+  "name": "book-a-meal",
+  "version": "1.0.0",
+  "description": "Book a meal is a meal booking app. That enables customer book meals and get them delivered to their doorstep",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tyak99/Book-A-Meal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tyak99/Book-A-Meal/issues"
+  },
+  "homepage": "https://github.com/Tyak99/Book-A-Meal#readme"
+}
