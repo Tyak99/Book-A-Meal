@@ -5,7 +5,7 @@ const orderServices = new OrderService();
 exports.getAllOrders = (req, res) => {
   const orders = orderServices.getAll();
   res.send({
-    status: 'success',
+    status: 200,
     data: orders,
   });
 };
@@ -13,20 +13,23 @@ exports.getAllOrders = (req, res) => {
 exports.postOrder = (req, res) => {
   if ((!req.body.meals, !req.body.price, !req.body.delivery_address)) {
     res.send({
-      status: 'error',
-      message: 'all fields must be filled',
+      status: 400,
+      data: {
+        message: 'Sorry, all fields must be filled',
+      },
     });
   }
   const newOrder = {
     meals: req.body.meals,
     price: req.body.price,
-    customer: req.user.id,
+    customer: req.body.customer,
+    status: req.body.status,
     delivery_address: req.body.delivery_address,
   };
-  orderServices.addOrder();
-  res.status(201).send({
-    messsage: 'order created successfully',
-    data: newOrder,
+  const setOrder = orderServices.addOrder(newOrder);
+  res.send({
+    status: 201,
+    data: setOrder,
   });
 };
 
@@ -34,17 +37,15 @@ exports.editOrder = (req, res) => {
   const order = orderServices.get(req.params.id);
   if (!order) {
     res.send({
-      status: 'error',
-      message: 'order cant be found',
+      status: 400,
+      data: {
+        message: 'Sorry, order cannot be found',
+      },
     });
   }
-  const editedOrder = {
-    meals: req.body.meals,
-    price: req.body.price,
-  };
-  orderServices.editOrder(req.params.id, editedOrder);
-  res.status(202).send({
-    status: 'success',
-    message: 'order edited successfully',
+  const editedOrder = orderServices.editOrder(req.params.id, req.body);
+  res.send({
+    status: 200,
+    data: editedOrder,
   });
 };
