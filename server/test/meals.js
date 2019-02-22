@@ -74,4 +74,42 @@ describe('Meal tests', () => {
         });
     });
   });
+  describe('POST api/v1/meals', () => {
+    it('should return 404 error on wrong api call', (done) => {
+      chai
+        .request(server)
+        .post('/api/v1/wrongapi')
+        .end((err, res) => {
+          expect(res.status).to.eql(404);
+          done();
+        });
+    });
+    it('should return error if the required fields arent present', (done) => {
+      chai
+        .request(server)
+        .post('/api/v1/meals/')
+        .send({})
+        .end((err, res) => {
+          expect(res.body.status).to.eql(400);
+          expect(res.body.data).to.have.property('message');
+          done();
+        });
+    });
+    it('should post a meal successfully', (done) => {
+      chai
+        .request(server)
+        .post('/api/v1/meals/')
+        .send({ name: 'Beans', size: '2', price: '1200' })
+        .end((err, res) => {
+          expect(res.body.status).to.eql(201);
+          expect(res.body.data).to.be.an('object');
+          expect(res.body.data).to.have.property('id');
+          expect(res.body.data).to.have.property('name');
+          expect(res.body.data).to.have.property('size');
+          expect(res.body.data).to.have.property('price');
+          expect(res.body.data).to.have.property('currency');
+          done();
+        });
+    });
+  });
 });
