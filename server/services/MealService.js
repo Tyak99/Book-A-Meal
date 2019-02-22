@@ -6,21 +6,21 @@ export default class MealService {
       {
         id: 1,
         name: 'Jollof Rice',
-        size: 'plates',
+        size: '1',
         price: '500',
         currency: 'NGN',
       },
       {
         id: 2,
         name: 'Fried Rice',
-        size: 'plates',
+        size: '1',
         price: '500',
         currency: 'NGN',
       },
       {
         id: 3,
         name: 'Coconut Rice',
-        size: 'plates',
+        size: '1',
         price: '500',
         currency: 'NGN',
       },
@@ -32,6 +32,7 @@ export default class MealService {
       meal.name = data.name;
       meal.size = data.size;
       meal.price = data.price;
+      meal.currency = 'NGN';
       return meal;
     });
   }
@@ -46,17 +47,15 @@ export default class MealService {
 
   setMeal(data) {
     const allMeal = this.fetchAllMeals();
-    const newMeal = { id: allMeal.length + 1, ...data };
+    const newMeal = { id: allMeal.length + 1, ...data, currency: 'NGN' };
     allMeal.push(newMeal);
-    return allMeal;
+    return newMeal;
   }
 
-  editMeal(id, newMeal) {
+  editMeal(id, data) {
     const meal = this.fetchAllMeals()[id - 1];
-    meal.price = newMeal.price;
-    meal.name = newMeal.name;
-    meal.size = newMeal.size;
-    return meal;
+    const editedMeal = Object.assign(meal, data);
+    return editedMeal;
   }
 
   deleteMeal(id) {

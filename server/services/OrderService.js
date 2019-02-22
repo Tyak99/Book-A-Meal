@@ -20,19 +20,20 @@ export default class OrderService {
     return this.fetchAll();
   }
 
+  get(id) {
+    return this.fetchAll()[id - 1];
+  }
+
   addOrder(order) {
     const allOrders = this.fetchAll();
-    const newOrder = { id: allOrders.length + 1, ...order, createdAt: new Date() };
+    const newOrder = { id: allOrders.length + 1, ...order, createdAt: Date() };
     allOrders.push(newOrder);
-    return allOrders;
+    return newOrder;
   }
 
   editOrder(id, data) {
     const order = this.fetchAll()[id - 1];
-    order.meals = data.meals;
-    order.price = data.price;
-    order.status = data.status;
-    order.delivery_address = data.delivery_address;
-    return order;
+    const editedOrder = Object.assign(order, data);
+    return editedOrder;
   }
 }

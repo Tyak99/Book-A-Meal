@@ -1,28 +1,12 @@
 import express from 'express';
-import OrderService from '../services/OrderService';
+import orderControllers from '../controllers/orderController';
 
 const router = express();
-const orderServices = new OrderService();
 
-router.get('/', (req, res) => {
-  res.status(200).send(orderServices.getAll());
-});
+router.get('/', orderControllers.getAllOrders);
 
-router.post('/', (req, res) => {
-  const newOrder = {
-    meals: req.body.meals,
-    price: req.body.price,
-    customer: req.user.id,
-    delivery_address: req.body.delivery_address,
-  };
-  res.status(201).send(orderServices.addOrder(newOrder));
-});
+router.post('/', orderControllers.postOrder);
 
-router.put('/:id', (req, res) => {
-  const editedOrder = {
-    meals: req.body.meals,
-    price: req.body.price,
-  };
-  res.status(202).send(orderServices.editOrder(req.params.id, editedOrder));
-});
+router.put('/:id', orderControllers.editOrder);
+
 export default router;
