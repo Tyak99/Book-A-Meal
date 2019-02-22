@@ -21,7 +21,7 @@ describe('Meal tests', () => {
     it('should return 404 error on wrong api call', (done) => {
       chai
         .request(server)
-        .get('api/v1/wrongapi')
+        .get('/api/v1/wrongapi')
         .end((err, res) => {
           expect(res.status).to.eql(404);
           done();
@@ -42,7 +42,7 @@ describe('Meal tests', () => {
     it('should return 404 error for wrong api call', (done) => {
       chai
         .request(server)
-        .get('api/v1/wrongapi')
+        .get('/api/v1/wrongapi')
         .end((err, res) => {
           expect(res.status).to.eql(404);
           done();
