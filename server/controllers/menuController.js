@@ -11,16 +11,16 @@ exports.getMenu = (req, res) => {
 };
 
 exports.getOneMenu = (req, res) => {
-  const menu = menuServices.get();
+  const menu = menuServices.get(req.params.id);
   if (!menu) {
-    res.send({
+    return res.send({
       status: 400,
       data: {
         message: 'Sorry, no menu with that id found',
       },
     });
   }
-  res.send({
+  return res.send({
     status: 200,
     data: menu,
   });
