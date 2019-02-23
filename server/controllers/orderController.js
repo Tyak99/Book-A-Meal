@@ -12,7 +12,7 @@ exports.getAllOrders = (req, res) => {
 
 exports.postOrder = (req, res) => {
   if ((!req.body.meals, !req.body.price, !req.body.delivery_address)) {
-    res.send({
+    return res.send({
       status: 400,
       data: {
         message: 'Sorry, all fields must be filled',
@@ -27,7 +27,7 @@ exports.postOrder = (req, res) => {
     delivery_address: req.body.delivery_address,
   };
   const setOrder = orderServices.addOrder(newOrder);
-  res.send({
+  return res.send({
     status: 201,
     data: setOrder,
   });
