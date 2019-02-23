@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/v1/meals', mealRoutes);
-app.use('/api/v1/menus', menuRoutes);
+app.use('/api/v1/menu', menuRoutes);
 app.use('/api/v1/orders', orderRoutes);
 
 const PORT = 3000;
