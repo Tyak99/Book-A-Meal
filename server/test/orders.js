@@ -83,4 +83,39 @@ describe('ORDERS /api/v1/orders', () => {
         });
     });
   });
+  describe('EDIT /api/v1/orders', () => {
+    it('should return error 404 on wrong api call', (done) => {
+      chai
+        .request(server)
+        .put('/api/v1/wrongapi')
+        .end((err, res) => {
+          expect(res.status).to.eql(404);
+          done();
+        });
+    });
+    it('should return error when a wrong id is passed with request', (done) => {
+      chai
+        .request(server)
+        .put('/api/v1/orders/wrongid')
+        .end((err, res) => {
+          expect(res.body.status).to.eql(400);
+          expect(res.body.data).to.have.property('message');
+          done();
+        });
+    });
+    it('should edit the correct order', (done) => {
+      chai
+        .request(server)
+        .put('/api/v1/orders/1')
+        .send({ status: 'delivered' })
+        .end((err, res) => {
+          expect(res.body.status).to.eql(200);
+          expect(res.body.data).to.be.an('object');
+          expect(res.body.data).to.have.property('id');
+          expect(res.body.data).to.have.property('meals');
+          expect(res.body.data).to.have.property('status');
+          done();
+        });
+    });
+  });
 });

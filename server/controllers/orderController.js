@@ -36,7 +36,7 @@ exports.postOrder = (req, res) => {
 exports.editOrder = (req, res) => {
   const order = orderServices.get(req.params.id);
   if (!order) {
-    res.send({
+    return res.send({
       status: 400,
       data: {
         message: 'Sorry, order cannot be found',
@@ -44,7 +44,7 @@ exports.editOrder = (req, res) => {
     });
   }
   const editedOrder = orderServices.editOrder(req.params.id, req.body);
-  res.send({
+  return res.send({
     status: 200,
     data: editedOrder,
   });
