@@ -2,7 +2,17 @@ import Order from '../models/Order';
 
 export default class OrderService {
   fetchAll() {
-    this.orders = [];
+    this.orders = [
+      {
+        id: 1,
+        meals: [],
+        price: '1200',
+        customer: '1',
+        status: 'sent',
+        delivery_address: 'Mafoluku',
+        createdAt: Date(),
+      },
+    ];
     return this.orders.map((data) => {
       const order = new Order();
       order.id = data.id;

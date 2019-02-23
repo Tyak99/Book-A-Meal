@@ -12,7 +12,7 @@ exports.getAllOrders = (req, res) => {
 
 exports.postOrder = (req, res) => {
   if ((!req.body.meals, !req.body.price, !req.body.delivery_address)) {
-    res.send({
+    return res.send({
       status: 400,
       data: {
         message: 'Sorry, all fields must be filled',
@@ -27,7 +27,7 @@ exports.postOrder = (req, res) => {
     delivery_address: req.body.delivery_address,
   };
   const setOrder = orderServices.addOrder(newOrder);
-  res.send({
+  return res.send({
     status: 201,
     data: setOrder,
   });
@@ -36,7 +36,7 @@ exports.postOrder = (req, res) => {
 exports.editOrder = (req, res) => {
   const order = orderServices.get(req.params.id);
   if (!order) {
-    res.send({
+    return res.send({
       status: 400,
       data: {
         message: 'Sorry, order cannot be found',
@@ -44,7 +44,7 @@ exports.editOrder = (req, res) => {
     });
   }
   const editedOrder = orderServices.editOrder(req.params.id, req.body);
-  res.send({
+  return res.send({
     status: 200,
     data: editedOrder,
   });
