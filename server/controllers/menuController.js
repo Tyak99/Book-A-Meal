@@ -29,9 +29,11 @@ exports.getOneMenu = (req, res) => {
 exports.postMenu = (req, res) => {
   const { name, price, meals } = req.body;
   if (!name || !price || !meals) {
-    res.send({
+    return res.send({
       status: 400,
-      message: 'Sorry, all fields must be present',
+      data: {
+        message: 'Sorry, all fields must be present',
+      },
     });
   }
   const newMenu = {
@@ -40,7 +42,7 @@ exports.postMenu = (req, res) => {
     meals,
   };
   const setMenu = menuServices.addMeal(newMenu);
-  res.send({
+  return res.send({
     status: 201,
     data: setMenu,
   });
