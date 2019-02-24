@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: linen;
+      }
+
+      h1 {
+        color: maroon;
+      }
+      li {
+        line-height: 40px;
+      }
+      span {
+        background-color: darkgrey;
+        padding: 0 10px;
+        font-size: large;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Book-a-meal</h1>
+    <p>
+      Book a meal is a meal booking app. That enables customer book meals and
+      get them delivered to their doorstep
+    </p>
+    <div class="endpoints">
+      <h2>API Endpoints</h2>
+      <div class="meals">
+        <h2>Meals</h2>
+        <ul>
+          <li>
+            <span>GET /api/v1/meals</span>
+            to get all meals
+          </li>
+          <li>
+            <span>GET /api/v1/meals</span>
+            to get a single meal
+          </li>
+          <li>
+            <span>EDIT /api/v1/meals/:id</span>
+            to edit a meal
+          </li>
+          <li>
+            <span>POST /api/v1/meals</span>
+            to create a meal
+          </li>
+          <li>
+            <span>DELETE /api/v1/meals/:id</span>
+            to delete a meal
+          </li>
+        </ul>
+      </div>
+      <div class="menus">
+        <h2>Menu</h2>
+        <ul>
+          <li>
+            <span>GET /api/v1/menu</span>
+            to get all menus
+          </li>
+          <li>
+            <span>GET /api/v1/menu</span>
+            to get a single menu
+          </li>
+          <li>
+            <span>EDIT /api/v1/menu/:id</span>
+            to edit a menu
+          </li>
+          <li>
+            <span> POST /api/v1/menu</span>
+            to create a menu
+          </li>
+        </ul>
+      </div>
+      <div class="orders">
+        <h2>Orders</h2>
+        <ul>
+          <li>
+            <span>GET /api/v1/orders</span>
+            to get all orders
+          </li>
+          <li>
+            <span>GET /api/v1/orders</span>
+            to get a single order
+          </li>
+          <li>
+            <span>EDIT /api/v1/orders/:id</span>
+            to edit a order
+          </li>
+          <li>
+            <span>POST /api/v1/orders</span>
+            to create a order
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
