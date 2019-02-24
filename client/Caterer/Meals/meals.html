@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <div class="nav" id="myNav">
+      <h2 class="nav-brand">Food Drip</h2>
+      <a href="#home" class="active">Home</a>
+      <a href="#">About</a>
+      <a href="../../Login/Login.html">Sign In</a>
+      <a href="../../Register/Register.html">Sign Up</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+    <!-- End of naviagtion -->
+    <div class="container">
+      <h1>Meal Options</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Meals</th>
+            <th>Amount</th>
+            <th> Action </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th data-column='Number'>1</th>
+            <td data-column='Meal'>Bread and Beans</td>
+            <td data-column='Amount'>#1200</td>
+            <td>
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <th data-column='Number'>2</th>
+            <td data-column='Meal'>Jollof Rice</td>
+            <td data-column='Amount'>#500</td>
+            <td>
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <th data-column='Number'>3</th>
+            <td data-column='Meal'>Fries and yam</td>
+            <td data-column='Amount'>#600</td>
+            <td>
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <th data-column='#'>4</th>
+            <td data-column='Meal'>Weed and smoke</td>
+            <td data-column='Amount'>#1200</td>
+            <td>
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="addNewMeal" id="openModal">Add New Meal</button>
+      <div class="modal" id="myModal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close-button"> &times;</span>
+            <h2>Add a new meal</h2>
+          </div>
+          <div class="modal-body">
+            <div class="meal-name">
+              <label for=""> Meal Name </label>
+              <input type="text" placeholder="Meal Name" />
+            </div>
+            <div class="meal-amount">
+              <label for=""> Meal Amount </label>
+              <input type="number" placeholder="Meal Amount" />
+            </div>
+            <div style="text-align: center">
+              <button class="submit-meal">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../main.js"></script>
+</html>
