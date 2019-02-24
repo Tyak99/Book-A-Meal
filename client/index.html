@@ -1,53 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
 
     <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
 
     <!-- google font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-</head>
-
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="first-column column">
-                <div style="text-align: center" class="items">
-                        <a href="./Login/Login.html"> <button>Log In</button></a>
-                        <a href="./Register/Register.html"><button> Register</button></a>
-                </div>
-                
-            </div>
-            <div class="column second-column">
-                <div class="row">
-                    <div class="col">
-                        <span style="font-size: 5em; color: Tomato;" class="col-icon">
-                            <img src="./assets/coffee.png" alt="">
-                        </span>
-                        <p> Order for your delicious meal</p>
-                    </div>
-                    <div class="col">
-                        <span style="font-size: 5em; color: Tomato;">
-                                <img src="./assets/delivery-bike.png" alt="">                            
-                        </span>
-                        <p> Get it delivered at the speed of light</p>
-                    </div>
-                    <div class="col">
-                        <span style="font-size: 5em; color: Tomato;" class="col-icon">
-                                <img src="./assets/restaurant.png" alt="">                                                       
-                        </span>
-                        <p> Eat to your fill</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <div class="nav" id="myNav">
+      <h2 class="nav-brand">Food Drip</h2>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="./Login/Login.html">Sign In</a>
+      <a href="./User/Menu/index.html"> Book a meal </a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
     </div>
-</body>
-
+    <!-- end of Navigation -->
+    <div class="container">
+      <div class="row">
+        <div class="first-column column"></div>
+        <div class="column second-column">
+          <div class="row">
+            <div class="col">
+              <span style="font-size: 5em; color: Tomato;" class="col-icon">
+                <img src="./assets/coffee.png" alt="" />
+              </span>
+              <p>Order for your delicious meal</p>
+            </div>
+            <div class="col">
+              <span style="font-size: 5em; color: Tomato;">
+                <img src="./assets/delivery-bike.png" alt="" />
+              </span>
+              <p>Get it delivered at the speed of light</p>
+            </div>
+            <div class="col">
+              <span style="font-size: 5em; color: Tomato;" class="col-icon">
+                <img src="./assets/restaurant.png" alt="" />
+              </span>
+              <p>Eat to your fill</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./main.js"></script>
 </html>
