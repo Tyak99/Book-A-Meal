@@ -1,26 +1,231 @@
 body {
-    padding-top: 54px;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+  /* Add a black background color to the top navigation */
+  .nav {
+    background-color: maroon;
+    overflow: hidden;
+    /* width: 100%; */
   }
   
-  @media (min-width: 992px) {
-    body {
-      padding-top: 56px;
+  /* Style the links inside the navigation bar */
+  .nav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 24px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .nav-brand {
+    float: left;
+    margin: 12px 21px 13px 12px;
+    font-size: larger;
+    text-decoration: none;
+    color: white;
+  }
+  
+  
+  /* Change the color of links on hover */
+  .nav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add an active class to highlight the current page */
+  .active {
+    background-color: grey;
+    color: white;
+  }
+  
+  /* Hide the link that should open and close the nav on small screens */
+  .nav .icon {
+    display: none;
+  }
+  
+  
+  /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the nav (.icon) */
+  @media screen and (max-width: 600px) {
+    .nav a:not(:first-child) {display: none;}
+    .nav a.icon {
+      float: right;
+      display: block;
+    }
+  }
+  
+  /* The "responsive" class is added to the nav with JavaScript when the user clicks on the icon. This class makes the nav look good on small screens (display the links vertically instead of horizontally) */
+  @media screen and (max-width: 600px) {
+    .nav.responsive {position: relative;}
+    .nav.responsive a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .nav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
     }
   }
 
-  .form-check {
-      margin: 40px 20px;
 
+.col {
+    float: left;
+    max-width: 225px;
+    padding: 0 11px;
+    margin: 10px 4px;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
   }
 
-  .my-text-area {
-      width: 50%;
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    height: 370px;
+    /* height: 100%!important; */
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    /* overflow: auto; */
   }
 
-  .section2 {
-      margin: 25px;
+  .card-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+  }
+  .card-body {
+      padding: 0.25em;
+      flex: 1 1 auto;
+  }
+  .card-title {
+      margin: 10%;
+      color: cornflowerblue;
+      font-size: 20px;
+      text-align: center;
   }
 
-  .row {
-      margin-top: 11px;
+  .card-amount {
+    font-size: 18px;
+    margin-bottom: 10px;
+    
   }
+  .card-text {
+      font-weight: 400;
+      font-size: larger;
+  }
+
+  #openModal {
+      padding: 7px 10px;
+      cursor: pointer;
+      font-size: 15px;
+      display: inline-block;
+      text-align: center;
+      font-weight: 400;
+      color: white;
+      background-color: cornflowerblue;
+      border-radius: 0.3em;
+  }
+  #openModal:hover {
+      background-color: maroon;
+  }
+
+  .modal {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+  }
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 11% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  max-width: 350px; /* Could be more or less, depending on screen size */
+  border-radius: 0.5rem;
+}
+ /* The Close Button */
+.close-button {
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover,
+.close:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+  margin: -20px;
+  margin-bottom: 5px;
+}
+
+.menu-caption label {
+  margin-bottom: .5em;
+  display: block;
+}
+.menu-title label {
+  margin-bottom: .5em;
+  display: block;
+}
+.modal-body input[type='text'] {
+  font-size: 1em;
+    font-weight: 400;
+    border: 1px solid #ced4da;
+    border-radius: .25em;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+}
+.modal-body textarea {
+  font-weight: 600;
+}
+
+.submit-meal {
+  padding: 7px 20px;
+  color: white;
+  background-color: dodgerblue;
+  font-size: medium;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form-check {
+  margin: 5px;
+}
