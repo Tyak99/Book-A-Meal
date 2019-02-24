@@ -215,6 +215,7 @@ body {
 }
 .modal-body textarea {
   font-weight: 600;
+  border-radius: 5px;
 }
 
 .submit-meal {
