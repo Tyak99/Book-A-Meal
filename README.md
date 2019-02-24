@@ -34,10 +34,10 @@ npm start
 
 ### Menu
 
-* GET all menus `api/v1/menus`
-* GET one menu `api/v1/menus/:id`
-* POST a menu `api/v1/menus`
-* EDIT a menu `api/v1/menus/:id`
+* GET all menus `api/v1/menu`
+* GET one menu `api/v1/menu/:id`
+* POST a menu `api/v1/menu`
+* EDIT a menu `api/v1/menu/:id`
 
 
 ### Orders
