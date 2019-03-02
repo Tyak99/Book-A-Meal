@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'User',
@@ -20,11 +21,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  User.associate = function(models) {
+  User.associate = function (models) {
     // associations can be defined here
     User.belongsTo(models.Role, {
       foreignKey: 'roleId',
-    })
+    });
+    User.hasMany(models.Meal, {
+      foreignKey: 'userId',
+      as: 'catererId',
+    });
   };
   return User;
 };
