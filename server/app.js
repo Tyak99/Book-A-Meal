@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import mealRoutes from './routes/mealsRoute';
 import menuRoutes from './routes/menusRoute';
 import orderRoutes from './routes/orderRoutes';
+import registerRoute from './routes/register';
 
 const app = express();
 app.use(express.json());
@@ -13,6 +14,7 @@ app.set('view engine', 'ejs');
 app.use('/api/v1/meals', mealRoutes);
 app.use('/api/v1/menu', menuRoutes);
 app.use('/api/v1/orders', orderRoutes);
+app.use('/api/v1/auth/signup', registerRoute);
 
 app.get('/', (req, res) => {
   res.render('home');
