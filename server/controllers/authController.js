@@ -1,4 +1,5 @@
 const User = require('../models').User;
+const Meal = require('../models').Meal;
 
 exports.create = (req, res) => {
   User.create({
@@ -10,4 +11,17 @@ exports.create = (req, res) => {
   })
     .then((user) => res.status(201).send(user))
     .catch((error) => res.status(300).send(error));
+};
+
+exports.list = (req, res) => {
+  User.findById(3, {
+    include: [
+      {
+        model: Meal,
+        as: 'meals',
+      },
+    ],
+  })
+    .then((user) => res.send(user.meals))
+    .catch((err) => res.send(err));
 };
