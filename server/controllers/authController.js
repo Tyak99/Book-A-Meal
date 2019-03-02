@@ -6,6 +6,7 @@ exports.create = (req, res) => {
     lastName: req.body.lastName,
     email: req.body.email,
     password: req.body.password,
+    roleId: req.body.role,
   })
     .then((user) => res.status(201).send(user))
     .catch((error) => res.status(300).send(error));
