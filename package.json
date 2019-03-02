@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Tyak99/Book-A-Meal/issues"
   },
-  "homepage": "https://github.com/Tyak99/Book-A-Meal#readme"
+  "homepage": "https://github.com/Tyak99/Book-A-Meal#readme",
+  "dependencies": {
+    "pg": "^7.8.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.42.1"
+  }
 }
