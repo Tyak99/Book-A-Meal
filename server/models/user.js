@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  User.associate = function (models) {
+  User.associate = function(models) {
     // associations can be defined here
     User.belongsTo(models.Role, {
       foreignKey: 'roleId',
@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Meal, {
       foreignKey: 'catererId',
       as: 'meals',
+    });
+    User.hasMany(models.Order, {
+      foreignKey: 'userId',
+      as: 'orders',
     });
   };
   return User;
