@@ -1,9 +1,13 @@
 import express from 'express';
+import passport from 'passport';
+import passportService from '../services/passport';
 import orderController from '../controllers/order';
 
 const router = express();
 
-router.get('/caterer/:id', orderController.allOrders);
-router.post('/', orderController.create);
-router.put('/:id', orderController.editOrder);
+const requireAuth = passport.authenticate('jwt', { session: false });
+
+router.get('/caterer/:id', requireAuth, orderController.allOrders);
+router.post('/', requireAuth, orderController.create);
+router.put('/:id', requireAuth, orderController.editOrder);
 export default router;
