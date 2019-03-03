@@ -8,5 +8,5 @@ const router = express();
 const requireAuth = passport.authenticate('jwt', { session: false });
 
 router.get('/', requireAuth, menuController.list);
-router.post('/', menuController.create);
+router.post('/', requireAuth, menuController.create);
 export default router;

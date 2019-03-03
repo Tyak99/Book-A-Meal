@@ -29,7 +29,7 @@ exports.create = (req, res) => {
       password: hash,
       roleId: role,
     })
-      .then(() => {
+      .then((user) => {
         const token = tokenFunction(user);
         res.send({
           token,
