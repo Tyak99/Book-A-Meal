@@ -1,7 +1,14 @@
 import bcrypt from 'bcryptjs';
+import jwt from 'jwt-simple';
+
 
 const User = require('../models').User;
 const Meal = require('../models').Meal;
+
+const tokenFunction = (user) => {
+  const timestamp = new Date().getTime()
+  return jwt.encode({sub: user.id, iat: timestamp }, process.env.secret);
+}
 
 exports.create = (req, res) => {
   const {
@@ -22,10 +29,12 @@ exports.create = (req, res) => {
       password: hash,
       roleId: role,
     })
-      .then(user => res.send({
-        status: 200,
-        data: user,
-      }))
+      .then((user) => {
+        const token = tokenFunction(user);
+        res.send({
+          token,
+        });
+      })
       .catch(error => res.send(error));
   });
 };

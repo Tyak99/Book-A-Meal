@@ -1,10 +1,12 @@
 import express from 'express';
-import dotenv from 'dotenv';
-// routes
 import authRoute from './routes/auth';
 import mealRoutes from './routes/meal';
 import orderRoutes from './routes/order';
 import menuRoutes from './routes/menu';
+
+require('dotenv').config();
+// routes
+
 
 const app = express();
 app.use(express.json());
