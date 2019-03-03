@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    meals: DataTypes.ARRAY(DataTypes.TEXT),
   });
   Menu.associate = function(models) {
     // associations can be defined here
