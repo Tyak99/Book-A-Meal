@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.post('/', mealController.create);
 router.get('/', mealController.list);
+router.put('/:id', mealController.editMeal);
 
 export default router;
