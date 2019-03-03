@@ -3,17 +3,18 @@ import dotenv from 'dotenv';
 // routes
 import registerRoute from './routes/register';
 import mealRoutes from './routes/meal';
-import orderRoutes from './routes/order'
+import orderRoutes from './routes/order';
+import menuRoutes from './routes/menu';
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
-
 app.use('/api/v1/auth/signup', registerRoute);
 app.use('/api/v1/meal', mealRoutes);
 app.use('/api/v1/order', orderRoutes);
+app.use('/api/v1/menu', menuRoutes);
 
 app.get('/', (req, res) => {
   res.render('home');
@@ -21,7 +22,7 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log('server started')
+  console.log('server started');
 });
 
 module.exports = app;
