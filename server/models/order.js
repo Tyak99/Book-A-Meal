@@ -8,9 +8,8 @@ module.exports = (sequelize, DataTypes) => {
       delivery_address: DataTypes.STRING,
       meals: DataTypes.ARRAY(DataTypes.TEXT),
     },
-    {}
   );
-  Order.associate = function(models) {
+  Order.associate = function (models) {
     // associations can be defined here
     Order.belongsTo(models.User, {
       foreignKey: 'userId',

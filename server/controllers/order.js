@@ -23,12 +23,13 @@ exports.editOrder = (req, res) => {
         error: 'No order with that id found',
       });
     }
-    return order.update({
-      price: req.body.price,
-      order_status: req.body.order_status || order.status,
-      delivery_address: req.body.delivery_address || order.delivery_address,
-      meals: req.body.meals || order.meals,
-    })
+    return order
+      .update({
+        price: req.body.price,
+        order_status: req.body.order_status || order.status,
+        delivery_address: req.body.delivery_address || order.delivery_address,
+        meals: req.body.meals || order.meals,
+      })
       .then(() => res.send({
         status: 204,
         data: order,
@@ -38,4 +39,17 @@ exports.editOrder = (req, res) => {
         error,
       }));
   });
+};
+
+exports.allOrders = (req, res) => {
+  Order.findAll({
+    where: {
+      catererId: req.params.id,
+    },
+  })
+    .then(orders => res.send({
+      status: 200,
+      data: orders,
+    }))
+    .catch(error => res.send({ status: 400, error }));
 };
