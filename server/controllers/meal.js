@@ -39,3 +39,27 @@ exports.editMeal = (req, res) => {
       .catch((error) => res.send(error));
   });
 };
+
+exports.delete = (req, res) => {
+  Meal.findById(req.params.id).then((meal) => {
+    if (!meal) {
+      return res.send({
+        status: 404,
+        error: 'No meal found',
+      });
+    }
+    return meal
+      .destroy()
+      .then(() =>
+        res.send({
+          status: 204,
+          message: 'Deleted successfully',
+        }))
+      .catch((error) =>
+        res.send({
+          status: 400,
+          error,
+        })
+      );
+  });
+};
