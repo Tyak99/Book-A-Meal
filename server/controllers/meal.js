@@ -8,8 +8,8 @@ exports.create = (req, res) => {
     price: req.body.price,
     catererId: req.body.caterer,
   })
-    .then((meal) => res.status(201).send(meal))
-    .catch((err) => res.send(err));
+    .then(meal => res.status(201).send(meal))
+    .catch(err => res.send(err));
 };
 
 exports.list = (req, res) => {
@@ -18,8 +18,8 @@ exports.list = (req, res) => {
       catererId: 3,
     },
   })
-    .then((meal) => res.send(meal))
-    .catch((err) => res.send(err));
+    .then(meal => res.send(meal))
+    .catch(err => res.send(err));
 };
 
 exports.editMeal = (req, res) => {
@@ -36,7 +36,7 @@ exports.editMeal = (req, res) => {
         name: req.body.name || meal.name,
       })
       .then(() => res.send(meal))
-      .catch((error) => res.send(error));
+      .catch(error => res.send(error));
   });
 };
 
@@ -50,16 +50,13 @@ exports.delete = (req, res) => {
     }
     return meal
       .destroy()
-      .then(() =>
-        res.send({
-          status: 204,
-          message: 'Deleted successfully',
-        }))
-      .catch((error) =>
-        res.send({
-          status: 400,
-          error,
-        })
-      );
+      .then(() => res.send({
+        status: 204,
+        message: 'Deleted successfully',
+      }))
+      .catch(error => res.send({
+        status: 400,
+        error,
+      }));
   });
 };

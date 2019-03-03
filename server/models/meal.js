@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     },
-    {}
   );
   Meal.associate = function (models) {
     // associations can be defined here
