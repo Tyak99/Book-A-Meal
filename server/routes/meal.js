@@ -4,7 +4,7 @@ import mealController from '../controllers/meal';
 const router = express.Router();
 
 router.post('/', mealController.create);
-router.get('/', mealController.list);
+router.get('/caterer/:id', mealController.list);
 router.put('/:id', mealController.editMeal);
 router.delete('/:id', mealController.delete);
 
