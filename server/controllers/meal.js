@@ -15,7 +15,7 @@ exports.create = (req, res) => {
 exports.list = (req, res) => {
   Meal.findAll({
     where: {
-      catererId: 3,
+      catererId: req.params.id,
     },
   })
     .then(meal => res.send(meal))
