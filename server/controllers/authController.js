@@ -4,42 +4,28 @@ const User = require('../models').User;
 const Meal = require('../models').Meal;
 
 exports.create = (req, res) => {
-  User.findOne({
-    where: {
-      email: req.body.email,
-    },
-  })
-    .then((user) => {
-      if (user) {
-        return res.send({
-          status: 400,
-          error: 'User with this email exists',
-        });
-      }
-      return bcrypt.hash(req.body.password, 12);
+  const {
+ firstName, lastName, email, password, role } = req.body;
+  User.findOne({ where: { email } }).then((user) => {
+    if (user) {
+      return res.send({
+        status: 400,
+        error: 'User with email already exist',
+      });
+    }
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+    return User.create({
+      firstName,
+      lastName,
+      email,
+      password: hash,
+      roleId: role,
     })
-    .then((hashedPassword) => {
-      User.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: hashedPassword,
-        roleId: req.body.role,
-      })
-        .then(user => res.status(201).send(user))
-        .catch(error => res.status(300).send(error));
-    });
-};
-
-exports.list = (req, res) => {
-  User.findById(3, {
-    include: [
-      {
-        model: Meal,
-        as: 'meals',
-      },
-    ],
-  })
-    .then(user => res.send(user.meals))
-    .catch(err => res.send(err));
+      .then(user => res.send({
+        status: 200,
+        data: user,
+      }))
+      .catch(error => res.send(error));
+  });
 };
