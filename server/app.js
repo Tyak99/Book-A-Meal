@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 // routes
-import registerRoute from './routes/register';
+import registerRoute from './routes/auth';
 import mealRoutes from './routes/meal';
 import orderRoutes from './routes/order';
 import menuRoutes from './routes/menu';
