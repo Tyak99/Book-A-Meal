@@ -1,18 +1,16 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jwt-simple';
 
-
 const User = require('../models').User;
 const Meal = require('../models').Meal;
 
 const tokenFunction = (user) => {
-  const timestamp = new Date().getTime()
-  return jwt.encode({sub: user.id, iat: timestamp }, process.env.secret);
-}
+  const timestamp = new Date().getTime();
+  return jwt.encode({ sub: user.id, iat: timestamp }, process.env.secret);
+};
 
 exports.create = (req, res) => {
-  const {
- firstName, lastName, email, password, role } = req.body;
+  const { firstName, lastName, email, password, role } = req.body;
   User.findOne({ where: { email } }).then((user) => {
     if (user) {
       return res.send({
@@ -35,6 +33,15 @@ exports.create = (req, res) => {
           token,
         });
       })
-      .catch(error => res.send(error));
+      .catch((error) => res.send(error));
+  });
+};
+
+exports.login = (req, res) => {
+  //User is already verified before they get here
+  //so here i need to give the user token
+  res.send({
+    name: req.user.firstName,
+    token: tokenFunction(req.user),
   });
 };

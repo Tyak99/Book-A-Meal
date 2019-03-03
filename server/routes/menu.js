@@ -5,10 +5,8 @@ import passport from 'passport';
 
 const router = express();
 
+const requireAuth = passport.authenticate('jwt', { session: false });
 
-const requireAuth = passport.authenticate('jwt', {session: false});
-
-
-router.get('/',requireAuth, menuController.list);
+router.get('/', requireAuth, menuController.list);
 router.post('/', menuController.create);
 export default router;
