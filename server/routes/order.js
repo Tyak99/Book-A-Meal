@@ -3,8 +3,7 @@ import orderController from '../controllers/order';
 
 const router = express();
 
-router.get('/', (req, res) => {
-  res.send('order here');
-});
+router.get('/caterer/:id', orderController.allOrders);
 router.post('/', orderController.create);
+router.put('/:id', orderController.editOrder);
 export default router;
