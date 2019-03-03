@@ -1,9 +1,8 @@
 import express from 'express';
+import menuController from '../controllers/menu';
 
 const router = express();
 
-router.get('/', (req, res) => {
-  res.send('oopss');
-});
+router.get('/', menuController.test);
 
 export default router;
