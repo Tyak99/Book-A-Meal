@@ -1,10 +1,13 @@
 import passport from 'passport';
 import { Strategy, ExtractJwt } from 'passport-jwt';
-import User from '../models/user';
+import Model from '../models';
+import config from '../config/key';
+
+const { User } = Model;
 
 const JwtOptions = {
-    JwtFromRequest: ExtractJwt.fromHeader('authorization'),
-    key: process.env.secret
+  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+  secretOrKey: config.secret,
 };
 
 const JwtLogin = new Strategy(JwtOptions, (payload, done) => {
@@ -16,11 +19,10 @@ const JwtLogin = new Strategy(JwtOptions, (payload, done) => {
         done(null, user);
       } else {
         //otherwise call done without a user object
-
         done(null, false);
       }
     })
     .catch((error) => done(null, error));
 });
 
-passport.use(JwtLogin)
+passport.use(JwtLogin);
