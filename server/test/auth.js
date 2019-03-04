@@ -16,7 +16,7 @@ describe('Test login endpoint', () => {
         lastName: 'Bisiano',
         email: 'bisi@mail.com',
         password: 'lollipoppo',
-        role: 1,
+        roleId: 1,
       })
       .end((err, res) => {
         expect(res.body).to.have.property('token');

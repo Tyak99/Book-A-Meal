@@ -6,14 +6,15 @@ const { User } = Model;
 
 const tokenFunction = (user) => {
   const timestamp = new Date().getTime();
-  console.log(user.dataValues)
-  return jwt.encode({ sub: user.dataValues.id, iat: timestamp }, process.env.secret);
+  console.log(user.dataValues);
+  return jwt.encode(
+    { sub: user.dataValues.id, iat: timestamp },
+    process.env.secret,
+  );
 };
 
 exports.create = (req, res) => {
-  const {
-    firstName, lastName, email, password, role,
-  } = req.body;
+  const { firstName, lastName, email, password, role } = req.body;
   User.findOne({ where: { email } }).then((user) => {
     if (user) {
       return res.send({
@@ -23,20 +24,20 @@ exports.create = (req, res) => {
     }
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
-      User.create({
+    User.create({
       firstName,
       lastName,
       email,
       password: hash,
       roleId: role,
-    }).then((user) => {
+    })
+      .then((user) => {
         const token = tokenFunction(user);
-        console.log('rdtfygbhujnmftgbhn')
         res.send({
           token,
         });
       })
-      .catch(error => res.send(error));
+      .catch((error) => res.send(error));
   });
 };
 
