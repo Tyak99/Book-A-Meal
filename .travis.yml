@@ -10,6 +10,7 @@ env:
 
 install:
   - npm install
+  - npm install sequelize-cli
 
 services:
   - postgresql
