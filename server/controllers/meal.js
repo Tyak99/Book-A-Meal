@@ -59,7 +59,7 @@ exports.delete = (req, res) => {
   Meal.findById(req.params.id).then((meal) => {
     if (!meal) {
       return res.send({
-        status: 404,
+        status: 400,
         error: 'No meal found',
       });
     }
@@ -67,7 +67,7 @@ exports.delete = (req, res) => {
       .destroy()
       .then(() => res.send({
         status: 204,
-        message: 'Deleted successfully',
+        data: 'Meal deleted successfully',
       }))
       .catch(error => res.send({
         status: 400,
