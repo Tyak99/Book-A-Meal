@@ -3,12 +3,21 @@ import Model from '../models';
 const { Meal } = Model;
 
 exports.create = (req, res) => {
+  if (!req.body.name || !req.body.price) {
+    return res.send({
+      status: 400,
+      error: 'Meal needs to have name and price',
+    });
+  }
   Meal.create({
     name: req.body.name,
     price: req.body.price,
     catererId: req.body.caterer,
   })
-    .then(meal => res.status(201).send(meal))
+    .then(meal => res.send({
+      status: 201,
+      data: meal,
+    }))
     .catch(err => res.send(err));
 };
 
@@ -18,7 +27,10 @@ exports.list = (req, res) => {
       catererId: req.params.id,
     },
   })
-    .then(meal => res.send(meal))
+    .then(meal => res.send({
+      status: 200,
+      data: meal,
+    }))
     .catch(err => res.send(err));
 };
 

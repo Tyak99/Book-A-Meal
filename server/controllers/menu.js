@@ -4,7 +4,7 @@ const { Menu } = Model;
 
 exports.create = ('/', (req, res) => {
   if (!req.body.name || !req.body.price) {
-    res.send({
+    return res.send({
       status: 400,
       error: 'Meal needs to have a name and price',
     });
