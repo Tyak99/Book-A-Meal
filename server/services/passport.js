@@ -4,7 +4,8 @@ import LocalStrategy from 'passport-local';
 import bcrypt from 'bcryptjs';
 
 import Model from '../models';
-import config from '../config/key';
+
+require('dotenv').config();
 
 const { User } = Model;
 
@@ -32,7 +33,7 @@ const localLogin = new LocalStrategy(LocalOption, (email, password, done) => {
 
 const JwtOptions = {
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
-  secretOrKey: config.secret,
+  secretOrKey: process.env.secret,
 };
 
 const JwtLogin = new Strategy(JwtOptions, (payload, done) => {
