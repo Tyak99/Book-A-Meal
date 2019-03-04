@@ -1,33 +1,56 @@
-// /* eslint-disable import/no-extraneous-dependencies */
-// import chai from 'chai';
-// import chaiHttp from 'chai-http';
-// import server from '../app';
+/* eslint-disable import/no-extraneous-dependencies */
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import server from '../app';
 
-// const { expect } = chai;
-// chai.use(chaiHttp);
+const { expect } = chai;
+chai.use(chaiHttp);
 
-// describe('Menu tests', () => {
-//   describe('GET api/v1/menu', () => {
-//     it('should return error 404 on wrong api call', (done) => {
-//       chai
-//         .request(server)
-//         .get('/api/v1/wrongapi')
-//         .end((err, res) => {
-//           expect(res.status).to.eql(404);
-//           done();
-//         });
-//     });
-//     it('Get all menu', (done) => {
-//       chai
-//         .request(server)
-//         .get('/api/v1/menu')
-//         .end((err, res) => {
-//           expect(res.body.status).to.eql(200);
-//           expect(res.body.data).to.be.an('array');
-//           done();
-//         });
-//     });
-//   });
+const user = {
+  email: 'bisi@mail.com',
+  password: 'lollipoppo',
+};
+
+let token = '';
+
+describe('Test login', () => {
+  it('should login in a user', (done) => {
+    chai
+      .request(server)
+      .post('/api/v1/auth/login')
+      .send(user)
+      .end((err, res) => {
+        token = res.body.token;
+        expect(res.body).to.have.property('token');
+        done();
+      });
+  });
+});
+
+describe('Menu tests', () => {
+  describe('GET api/v1/menu', () => {
+    it('should return error 404 on wrong api call', (done) => {
+      chai
+        .request(server)
+        .get('/api/v1/wrongapi')
+        .end((err, res) => {
+          expect(res.status).to.eql(404);
+          done();
+        });
+    });
+    it('Get all menu', (done) => {
+      chai
+        .request(server)
+        .get('/api/v1/menu')
+        .set('Authorization', token)
+        .end((err, res) => {
+          expect(res.body.status).to.eql(200);
+          expect(res.body.data).to.be.an('array');
+          done();
+        });
+    });
+  });
+});
 //   describe('GET /api/v1/menu/id', () => {
 //     it('should return error 404 on wrong api call', (done) => {
 //       chai
