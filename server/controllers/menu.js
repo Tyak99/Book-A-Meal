@@ -2,8 +2,13 @@ import Model from '../models';
 
 const { Menu } = Model;
 
-exports.create = ('/',
-(req, res) => {
+exports.create = ('/', (req, res) => {
+  if (!req.body.name || !req.body.price) {
+    return res.send({
+      status: 400,
+      error: 'Meal needs to have a name and price',
+    });
+  }
   Menu.create({
     name: req.body.name,
     price: req.body.price,

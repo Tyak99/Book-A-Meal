@@ -6,13 +6,15 @@ const { User } = Model;
 
 const tokenFunction = (user) => {
   const timestamp = new Date().getTime();
-  return jwt.encode({ sub: user.id, iat: timestamp }, process.env.secret);
+  console.log(user.dataValues);
+  return jwt.encode(
+    { sub: user.dataValues.id, iat: timestamp },
+    process.env.secret,
+  );
 };
 
 exports.create = (req, res) => {
-  const {
-    firstName, lastName, email, password, role,
-  } = req.body;
+  const { firstName, lastName, email, password, role } = req.body;
   User.findOne({ where: { email } }).then((user) => {
     if (user) {
       return res.send({
@@ -22,7 +24,7 @@ exports.create = (req, res) => {
     }
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
-    return User.create({
+    User.create({
       firstName,
       lastName,
       email,
@@ -35,7 +37,7 @@ exports.create = (req, res) => {
           token,
         });
       })
-      .catch(error => res.send(error));
+      .catch((error) => res.send(error));
   });
 };
 
