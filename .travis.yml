@@ -1,24 +1,30 @@
 language: node_js
 
 node_js:
-  - "stable"
+  - 'stable'
 
 env:
   global:
     - CC_TEST_REPORTER_ID=9e698978f0e5d34e804f4773a957fb2278272644a4c138fb8a307c359d0066f7
+    - NODE_ENV=test
 
 install:
-  - cd server
   - npm install
+  - npm install sequelize-cli
+
+services:
+  - postgresql
 
 cache:
   directories:
-    - "node_modules"
+    - 'node_modules'
 
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+    - psql -c 'create database book_a_meal_test;' -U postgres
+    - psql -c "CREATE USER nasri WITH PASSWORD 'nasri';" -U postgres
+    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+    - chmod +x ./cc-test-reporter
+    - ./cc-test-reporter before-build
 
 script:
   - npm test

@@ -1,24 +1,45 @@
 {
-  "name": "book-a-meal",
+  "name": "book_a_meal",
   "version": "1.0.0",
-  "description": "Book a meal is a meal booking app. That enables customer book meals and get them delivered to their doorstep",
-  "main": "index.js",
+  "description": "A meal booking api",
+  "main": "./server/app.js",
   "scripts": {
-    "start": "node ./server/app.js"
+    "migrate": "NODE_ENV=test sequelize db:migrate:undo:all && sequelize db:migrate",
+    "start": "nodemon --exec babel-node ./server/app.js",
+    "test": "NODE_ENV=test npm run migrate && NODE_ENV=test nyc mocha --require @babel/register server/test/*.js --exit",
+    "coverage": "nyc report --reporter=lcov --reporter=text-lcov | coveralls"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Tyak99/Book-A-Meal.git"
-  },
-  "author": "",
+  "author": "Nasri",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Tyak99/Book-A-Meal/issues"
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
+    "babel-plugin-istanbul": "^5.1.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^6.0.1",
+    "nodemon": "^1.18.10",
+    "nyc": "^13.3.0"
   },
-  "homepage": "https://github.com/Tyak99/Book-A-Meal#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^6.2.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "jwt-simple": "^0.5.5",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
     "pg": "^7.8.1",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.42.1"
+    "sequelize": "^4.43.0"
   }
 }
