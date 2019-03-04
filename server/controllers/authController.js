@@ -6,7 +6,6 @@ const { User } = Model;
 
 const tokenFunction = (user) => {
   const timestamp = new Date().getTime();
-  console.log(user.dataValues);
   return jwt.encode(
     { sub: user.dataValues.id, iat: timestamp },
     process.env.secret,
