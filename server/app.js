@@ -3,6 +3,7 @@ import authRoute from './routes/auth';
 import mealRoutes from './routes/meal';
 import orderRoutes from './routes/order';
 import menuRoutes from './routes/menu';
+import roleRoute from './routes/role';
 
 require('dotenv').config();
 // routes
@@ -17,6 +18,7 @@ app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/meal', mealRoutes);
 app.use('/api/v1/order', orderRoutes);
 app.use('/api/v1/menu', menuRoutes);
+app.use('/api/v1/role', roleRoute);
 
 app.get('/', (req, res) => {
   res.render('home');
