@@ -3,6 +3,12 @@ import Model from '../models';
 const { Order } = Model;
 
 exports.create = (req, res) => {
+  if (!req.body.price || !req.body.meals || !req.body.delivery_address ) {
+    return res.send({
+      status: 400,
+      error: 'Order data is not complete',
+    });
+  }
   Order.create({
     price: req.body.price,
     order_status: req.body.order_status,
@@ -11,7 +17,10 @@ exports.create = (req, res) => {
     userId: req.body.userId,
     catererId: req.body.catererId,
   })
-    .then(order => res.send(order))
+    .then(order => res.send({
+      status: 201,
+      data: order,
+    }))
     .catch(error => res.send(error));
 };
 
