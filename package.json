@@ -4,8 +4,16 @@
   "description": "A meal booking api",
   "main": "./server/app.js",
   "scripts": {
+    "clean": "rm -rf ./server/build && mkdir ./server/build",
+    "build-route": "babel -d ./server/build/routes ./server/routes -s",
+    "build-controller": "babel -d ./server/build/controllers ./server/controllers -s",
+    "build-model": "babel -d ./server/build/models ./server/models -s",
+    "build-service": "babel -d ./server/build/services ./server/services -s",
+    "build-config": "babel -d ./server/build/config ./server/config -s",
+    "build-app": "babel -d ./server/build ./server/app.js -s",
+    "build": "npm run clean && npm run build-route && npm run build-controller && npm run build-config && npm run build-service && npm run build-model && npm run build-app",
     "migrate": "NODE_ENV=test sequelize db:migrate:undo:all && sequelize db:migrate",
-    "start": "nodemon --exec babel-node ./server/app.js",
+    "start": "node ./server/build/app.js",
     "test": "NODE_ENV=test npm run migrate && NODE_ENV=test nyc mocha --require @babel/register server/test/*.js --exit",
     "coverage": "nyc report --reporter=lcov --reporter=text-lcov | coveralls"
   },
@@ -41,5 +49,9 @@
     "pg": "^7.8.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.43.0"
+  },
+  "engines": {
+    "node": "8.12.0"
   }
 }
+
