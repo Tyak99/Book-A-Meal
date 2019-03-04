@@ -10,6 +10,6 @@ const requireAuth = passport.authenticate('jwt', { session: false });
 router.post('/', requireAuth, mealController.create);
 router.get('/caterer/:id', requireAuth, mealController.list);
 router.put('/:id', requireAuth, mealController.editMeal);
-router.delete('/:id', requireAuth, mealController.delete);
+router.delete('/caterer/:id', requireAuth, mealController.delete);
 
 export default router;

@@ -38,7 +38,7 @@ exports.editMeal = (req, res) => {
   Meal.findById(req.params.id).then((meal) => {
     if (!meal) {
       return res.send({
-        status: 404,
+        status: 400,
         error: 'No meal found',
       });
     }
@@ -47,7 +47,10 @@ exports.editMeal = (req, res) => {
         price: req.body.price || meal.price,
         name: req.body.name || meal.name,
       })
-      .then(() => res.send(meal))
+      .then(() => res.send({
+        status: 200,
+        data: meal,
+      }))
       .catch(error => res.send(error));
   });
 };
