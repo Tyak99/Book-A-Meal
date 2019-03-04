@@ -6,7 +6,8 @@ const { User } = Model;
 
 const tokenFunction = (user) => {
   const timestamp = new Date().getTime();
-  return jwt.encode({ sub: user.id, iat: timestamp }, process.env.secret);
+  console.log(user.dataValues)
+  return jwt.encode({ sub: user.dataValues.id, iat: timestamp }, process.env.secret);
 };
 
 exports.create = (req, res) => {
@@ -22,15 +23,15 @@ exports.create = (req, res) => {
     }
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
-    return User.create({
+      User.create({
       firstName,
       lastName,
       email,
       password: hash,
       roleId: role,
-    })
-      .then((user) => {
+    }).then((user) => {
         const token = tokenFunction(user);
+        console.log('rdtfygbhujnmftgbhn')
         res.send({
           token,
         });

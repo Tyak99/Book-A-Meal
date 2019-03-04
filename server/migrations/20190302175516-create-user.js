@@ -37,10 +37,11 @@ module.exports = {
       roleId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Role',
+          model: 'Roles',
           key: 'id',
           as: 'roleId',
         },
+      }
     });
   },
   down: (queryInterface, Sequelize) => {
