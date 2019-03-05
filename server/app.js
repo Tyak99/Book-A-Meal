@@ -21,7 +21,7 @@ const swaggerDefinition = {
     version: '1.0.0',
     description: 'All things meal',
   },
-  host: 'localhost:3000',
+  host: 'https://protected-waters-12782.herokuapp.com',
   basePath: '/',
 };
 // options for the swagger docs
